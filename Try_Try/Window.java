@@ -31,6 +31,9 @@ public class Window {
                                 Kubus kubus = new Kubus(sisi);
         
                                 System.out.println("\tLuas kubus: " + kubus.luas());
+
+                                
+                                
                                 System.out.println("\tVolume kubus: " + kubus.volume());
 
                                 System.out.println("Kembali ke menu sebelumnya? (Y/N)");
