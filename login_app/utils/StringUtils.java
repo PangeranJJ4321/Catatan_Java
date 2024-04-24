@@ -1,6 +1,6 @@
 package login_app.utils;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 public class StringUtils {
     /*
      TODO
@@ -20,12 +20,5 @@ public class StringUtils {
         }
         return parts[1];
     }
-    public static void main(String[] args) {
-        String fullName = "Pangeran Juhrifar";
-        generateNickname(fullName);
-        String[] parts = fullName.split(" ");
-        
 
-
-    }
 }
