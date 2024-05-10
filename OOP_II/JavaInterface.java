@@ -20,7 +20,6 @@ interface Polygon {
     void getArea();
 
     // default method
-
     default void getSides() {
         System.out.println("I can get sides of a polygon.");
 
@@ -44,10 +43,16 @@ class Rectangle implements Polygon {
 }
 
 class Square implements Polygon {
+    private double lenght;
+
+    Square(double length) {
+        this.lenght = length;
+    }
     public void getArea(){
-        int length = 5;
-        int area = length * length;
-        System.out.println("The area of the square is = " + area);
+        System.out.println("The area of the square is = " + (lenght * lenght));
+    }
+    public void getSides() {
+        System.out.println("I have 4 sides");
     }
 }
 
@@ -77,7 +82,7 @@ public class JavaInterface {
         r1.getArea();
         r1.getSides();
 
-        Square s1 = new Square();
+        Square s1 = new Square(5);
         s1.getArea();
         s1.getSides();
 

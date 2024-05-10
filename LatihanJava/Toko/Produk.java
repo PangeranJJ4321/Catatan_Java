@@ -3,9 +3,9 @@ package LatihanJava.Toko;
 public class Produk {
     String brand;
     int seriesNumber;
-    double price;
+    int price;
     
-    public Produk(String brand, int seriesNumber, double price) {
+    public Produk(String brand, int seriesNumber, int price) {
         this.brand = brand;
         this.seriesNumber = seriesNumber;
         this.price = price;
@@ -26,7 +26,7 @@ class Smartphone extends Produk {
     double screenSize;
     int storageCapacity;
     
-    public Smartphone(String brand, int seriesNumber, double price, double screenSize, int storageCapacity) {
+    public Smartphone(String brand, int seriesNumber, int price, double screenSize, int storageCapacity) {
         super(brand, seriesNumber, price);
         this.screenSize = screenSize;
         this.storageCapacity = storageCapacity;
@@ -45,7 +45,7 @@ class Camera extends Produk {
     int resolution;
     String lensType;
 
-    public Camera(String brand, int seriesNumber, double price, int resolution, String lensType) {
+    public Camera(String brand, int seriesNumber, int price, int resolution, String lensType) {
         super(brand, seriesNumber, price);
         this.resolution = resolution;
         this.lensType = lensType;
@@ -65,7 +65,7 @@ class Laptop extends Produk {
     int ramSize;
     String prosesorType;
 
-    public Laptop(String brand, int seriesNumber, double price, int ramSize, String prosesorType) {
+    public Laptop(String brand, int seriesNumber, int price, int ramSize, String prosesorType) {
         super(brand, seriesNumber, price);
         this.ramSize = ramSize;
         this.prosesorType = prosesorType;

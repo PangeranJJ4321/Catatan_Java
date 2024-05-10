@@ -277,8 +277,6 @@ public class Window {
     public static void bats(){
         System.out.println("---------------------------------------------------------------------");
     }
-    
-        
 
     
 }
