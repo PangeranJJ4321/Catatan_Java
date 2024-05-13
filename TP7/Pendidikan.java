@@ -1,24 +1,17 @@
 package TP7;
 
-class Pendidikan {
-    private String[] riwayatPendidikan;
+public class Pendidikan {
+    private String pendidikanTerakhir;
 
-    public Pendidikan(String[] riwayatPendidikan) {
-        this.riwayatPendidikan = riwayatPendidikan;
+    public Pendidikan(String pendidikanTerakhir) {
+        this.pendidikanTerakhir = pendidikanTerakhir;
     }
 
-    public String[] getRiwayatPendidikan() {
-        return riwayatPendidikan;
+    public String getPendidikanTerakhir() {
+        return pendidikanTerakhir;
     }
 
-    public void setRiwayatPendidikan(String[] riwayatPendidikan) {
-        this.riwayatPendidikan = riwayatPendidikan;
-    }
-
-    public void tampilkanRiwayatPendidikan() {
-        System.out.println("Riwayat Pendidikan: ");
-        for (String pendidikan : getRiwayatPendidikan()) {
-            System.out.println(pendidikan);
-        }
+    public void setPendidikanTerakhir(String pendidikanTerakhir) {
+        this.pendidikanTerakhir = pendidikanTerakhir;
     }
 }

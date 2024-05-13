@@ -1,135 +1,90 @@
 package TP7;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    private static ArrayList<Karyawan> dataKaryawan;
+
+    public Main() {
+        dataKaryawan = new ArrayList<>();
+    }
+
+    public static void menuAwal() {
         Scanner scanner = new Scanner(System.in);
-        int pilihan;
+        int input;
 
         do {
-            tampilkanMenu();
-            pilihan = scanner.nextInt();
-            scanner.nextLine(); // Konsumsi newline
+            System.out.println("===== MENU UTAMA =====");
+            System.out.println("1. Tambah Data Karyawan");
+            System.out.println("2. Tampilkan Data Karyawan");
+            System.out.println("3. Keluar");
+            System.out.print("Masukkan pilihan anda: ");
+            input = scanner.nextInt();
 
-            switch (pilihan) {
+            switch (input) {
                 case 1:
                     tambahDataKaryawan(scanner);
                     break;
                 case 2:
-                    tampilkanDetailKaryawan();
+                    tampilkanDataKaryawan();
                     break;
                 case 3:
-                    System.out.println("Keluar dari program.");
+                    System.out.println("Terima kasih telah menggunakan program ini.");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid. Silakan coba lagi.");
             }
-        } while (pilihan != 3);
+        } while (input != 3);
+
+        scanner.close();
     }
 
-    private static void tampilkanMenu() {
-        System.out.println("\n**Menu Utama**");
-        System.out.println("1. Tambah Data Karyawan");
-        System.out.println("2. Tampilkan Detail Karyawan");
-        System.out.println("3. Keluar");
-        System.out.print("Masukkan pilihan Anda: ");
+    public static void tambahDataKaryawan(Scanner scanner) {
+        scanner.nextLine(); // Consume newline character
+        String input;
+
+        System.out.println("\n===== TAMBAH DATA KARYAWAN =====");
+        System.out.print("Masukkan nama karyawan: ");
+        input = scanner.nextLine();
+        Karyawan karyawan = new Karyawan(input);
+
+        System.out.print("Masukkan pendidikan terakhir karyawan: ");
+        input = scanner.nextLine();
+        Pendidikan pendidikan = new Pendidikan(input);
+        karyawan.setPendidikan(pendidikan);
+
+        System.out.print("Masukkan pengalaman sebelumnya karyawan: ");
+        input = scanner.nextLine();
+        Pengalaman pengalaman = new Pengalaman(input);
+        karyawan.setPengalaman(pengalaman);
+
+        System.out.print("Masukkan jumlah projek karyawan: ");
+        int jumlahProjek = scanner.nextInt();
+        Projek projek = new Projek(jumlahProjek);
+        karyawan.setProjek(projek);
+
+        dataKaryawan.add(karyawan);
+
+        System.out.println("\nData karyawan berhasil ditambahkan.");
     }
 
-    private static void tambahDataKaryawan(Scanner scanner) {
-        System.out.println("\n**Tambah Data Karyawan**");
-
-        try {
-            System.out.print("Nama: ");
-            String nama = scanner.nextLine();
-
-            System.out.print("Umur: ");
-            int umur = scanner.nextInt();
-            scanner.nextLine(); // Konsumsi newline
-
-            System.out.print("Jabatan: ");
-            String jabatan = scanner.nextLine();
-
-            System.out.print("Gaji: ");
-            double gaji = scanner.nextDouble();
-            scanner.nextLine(); // Konsumsi newline
-
-            System.out.print("Jenis Pekerjaan: ");
-            String jenisPekerjaan = scanner.nextLine();
-
-            System.out.print("Jumlah Sertifikasi: ");
-            int jumlahSertifikasi = scanner.nextInt();
-            scanner.nextLine(); // Konsumsi newline
-
-            String[] sertifikasi = new String[jumlahSertifikasi];
-            for (int i = 0; i < jumlahSertifikasi; i++) {
-                System.out.print("Sertifikasi " + (i + 1) + ": ");
-                sertifikasi[i] = scanner.nextLine();
-            }
-
-            System.out.print("Jumlah Organisasi: ");
-            int jumlahOrganisasi = scanner.nextInt();
-            scanner.nextLine(); // Konsumsi newline
-
-            String[] organisasi = new String[jumlahOrganisasi];
-            for (int i = 0; i < jumlahOrganisasi; i++) {
-                System.out.print("Organisasi " + (i + 1) + ": ");
-                organisasi[i] = scanner.nextLine();
-            }
-
-            System.out.print("Riwayat Pendidikan (pisahkan dengan koma): ");
-            String riwayatPendidikanString = scanner.nextLine();
-            String[] riwayatPendidikan = riwayatPendidikanString.split(",");
-
-            Kehidupan kehidupan;
-            if (jenisPekerjaan.equalsIgnoreCase("Pengalaman")) {
-                kehidupan = new Pengalaman(jenisPekerjaan, sertifikasi, organisasi);
-            } else {
-                kehidupan = new Kehidupan() {
-                    @Override
-                    public void prosesKehidupan() {
-                        System.out.println("Menjalani pekerjaan sebagai " + jenisPekerjaan);
-                    }
-                };
-            }
-
-            Pendidikan pendidikan = new Pendidikan(riwayatPendidikan);
-            Project projek = new Project(0); // Jumlah projek belum diketahui
-
-            Karyawan karyawan = new Karyawan(nama, umur, jabatan, gaji);
-            karyawan.setKehidupan(kehidupan);
-            karyawan.setPendidikan(pendidikan);
-            karyawan.setProjek(projek);
-
-            if (karyawanDiterima(karyawan)) {
-                System.out.println("\nKaryawan dengan nama " + karyawan.getNama() + " diterima.");
-            } else {
-                System.out.println("\nKaryawan dengan nama " + karyawan.getNama() + " tidak diterima.");
-            }
-        } catch (Exception e) {
-            System.out.println("Terjadi kesalahan saat memasukkan data. Silakan periksa kembali input Anda.");
-            e.printStackTrace();
+    public static void tampilkanDataKaryawan() {
+        System.out.println("\n===== DATA KARYAWAN =====");
+        for (Karyawan karyawan : dataKaryawan) {
+            System.out.println("\nNama: " + karyawan.getNama());
+            System.out.println("Pendidikan terakhir: " + karyawan.getPendidikan().getPendidikanTerakhir());
+            System.out.println("Pengalaman sebelumnya: " + karyawan.getPengalaman().getPengalamanSebelumnya());
+            System.out.println("Jumlah projek: " + karyawan.getProjek().getJumlahProjek());
+            System.out.println("Proses kehidupan: ");
+            karyawan.prosesKehidupan();
+            System.out.println("Memenuhi kriteria: ");
+            karyawan.memenuhiKriteria();
         }
     }
 
-    private static void tampilkanDetailKaryawan() {
-        if (daftarKaryawan.isEmpty()) {
-            System.out.println("\nBelum ada data karyawan.");
-            return;
-        }
-
-        System.out.println("\n**Daftar Karyawan**");
-        for (int i = 0; i < daftarKaryawan.size(); i++) {
-            Karyawan karyawan = daftarKaryawan.get(i);
-            System.out.println("\nKaryawan ke-" + (i + 1));
-            System.out.println("Nama: " + karyawan.getNama());
-            System.out.println("Umur: " + karyawan.getUmur());
-            System.out.println("Jabatan: " + karyawan.getJabatan());
-            System.out.println("Gaji: " + karyawan.getGaji());
-            karyawan.getKehidupan().prosesKehidupan();
-            karyawan.getPendidikan().tampilkanRiwayatPendidikan();
-            karyawan.getProjek().tampilkanJumlahProjek();
-        }
+    public static void main(String[] args) {
+        Main main = new Main();
+        main.menuAwal();
     }
-
-    
 }

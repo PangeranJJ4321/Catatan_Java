@@ -1,16 +1,17 @@
 package TP7;
+import java.util.ArrayList;
 
-public class Karyawan {
+
+public class Karyawan{
     private String nama;
-    private int umur;
-    private String jabatan;
-    private double gaji;
+    private Pendidikan pendidikan;
+    private Pengalaman pengalaman;
+    private Projek projek;
+    private ArrayList<Kehidupan> kehidupans;
 
-    public Karyawan(String nama, int umur, String jabatan, double gaji) {
+    public Karyawan(String nama) {
         this.nama = nama;
-        this.umur = umur;
-        this.jabatan = jabatan;
-        this.gaji = gaji;
+        kehidupans = new ArrayList<>();
     }
 
     public String getNama() {
@@ -21,27 +22,43 @@ public class Karyawan {
         this.nama = nama;
     }
 
-    public int getUmur() {
-        return umur;
+    public Pendidikan getPendidikan() {
+        return pendidikan;
     }
 
-    public void setUmur(int umur) {
-        this.umur = umur;
+    public void setPendidikan(Pendidikan pendidikan) {
+        this.pendidikan = pendidikan;
     }
 
-    public String getJabatan() {
-        return jabatan;
+    public Pengalaman getPengalaman() {
+        return pengalaman;
     }
 
-    public void setJabatan(String jabatan) {
-        this.jabatan = jabatan;
+    public void setPengalaman(Pengalaman pengalaman) {
+        this.pengalaman = pengalaman;
     }
 
-    public double getGaji() {
-        return gaji;
+    public Projek getProjek() {
+        return projek;
     }
 
-    public void setGaji(double gaji) {
-        this.gaji = gaji;
+    public void setProjek(Projek projek) {
+        this.projek = projek;
+    }
+
+    public void addKehidupan(Kehidupan kehidupan) {
+        kehidupans.add(kehidupan);
+    }
+
+    public void prosesKehidupan() {
+        for (Kehidupan kehidupan : kehidupans) {
+            kehidupan.prosesKehidupan();
+        }
+    }
+
+    public void memenuhiKriteria() {
+        for (Kehidupan kehidupan : kehidupans) {
+            kehidupan.memenuhiKriteria();
+        }
     }
 }

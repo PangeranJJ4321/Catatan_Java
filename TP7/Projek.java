@@ -1,9 +1,9 @@
 package TP7;
 
-class Project {
+public class Projek {
     private int jumlahProjek;
 
-    public Project(int jumlahProjek) {
+    public Projek(int jumlahProjek) {
         this.jumlahProjek = jumlahProjek;
     }
 
@@ -13,9 +13,5 @@ class Project {
 
     public void setJumlahProjek(int jumlahProjek) {
         this.jumlahProjek = jumlahProjek;
-    }
-
-    public void tampilkanJumlahProjek() {
-        System.out.println("Jumlah Projek: " + getJumlahProjek());
     }
 }
