@@ -1,6 +1,6 @@
-package TP7;
+package TP7.Nomor1;
 
-public class Pendidikan {
+public class Pendidikan extends Kehidupan {
     private String pendidikanTerakhir;
 
     public Pendidikan(String pendidikanTerakhir) {
@@ -13,5 +13,15 @@ public class Pendidikan {
 
     public void setPendidikanTerakhir(String pendidikanTerakhir) {
         this.pendidikanTerakhir = pendidikanTerakhir;
+    }
+
+    @Override
+    public void prosesKehidupan() {
+        System.out.println("Proses pendidikan: " + pendidikanTerakhir);
+    }
+
+    @Override
+    public boolean memenuhiKriteria() {
+        return !pendidikanTerakhir.isEmpty();
     }
 }

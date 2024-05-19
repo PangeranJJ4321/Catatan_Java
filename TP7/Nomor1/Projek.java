@@ -1,6 +1,6 @@
-package TP7;
+package TP7.Nomor1;
 
-public class Projek {
+public class Projek extends Kehidupan {
     private int jumlahProjek;
 
     public Projek(int jumlahProjek) {
@@ -13,5 +13,15 @@ public class Projek {
 
     public void setJumlahProjek(int jumlahProjek) {
         this.jumlahProjek = jumlahProjek;
+    }
+
+    @Override
+    public void prosesKehidupan() {
+        System.out.println("Proses projek: " + jumlahProjek + " projek");
+    }
+
+    @Override
+    public boolean memenuhiKriteria() {
+        return jumlahProjek > 0;
     }
 }

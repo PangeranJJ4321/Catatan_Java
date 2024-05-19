@@ -1,25 +1,23 @@
-package TP7;
-import java.util.ArrayList;
+package TP7.Nomor1;
 
-
-public class Karyawan{
+public class Karyawan extends Kehidupan {
     private String nama;
+    private int umur;
     private Pendidikan pendidikan;
     private Pengalaman pengalaman;
     private Projek projek;
-    private ArrayList<Kehidupan> kehidupans;
 
-    public Karyawan(String nama) {
+    public Karyawan(String nama, int umur) {
         this.nama = nama;
-        kehidupans = new ArrayList<>();
+        this.umur = umur;
     }
 
     public String getNama() {
         return nama;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public int getUmur() {
+        return umur;
     }
 
     public Pendidikan getPendidikan() {
@@ -46,19 +44,15 @@ public class Karyawan{
         this.projek = projek;
     }
 
-    public void addKehidupan(Kehidupan kehidupan) {
-        kehidupans.add(kehidupan);
-    }
-
+    @Override
     public void prosesKehidupan() {
-        for (Kehidupan kehidupan : kehidupans) {
-            kehidupan.prosesKehidupan();
-        }
+        pendidikan.prosesKehidupan();
+        pengalaman.prosesKehidupan();
+        projek.prosesKehidupan();
     }
 
-    public void memenuhiKriteria() {
-        for (Kehidupan kehidupan : kehidupans) {
-            kehidupan.memenuhiKriteria();
-        }
+    @Override
+    public boolean memenuhiKriteria() {
+        return pendidikan.memenuhiKriteria() && pengalaman.memenuhiKriteria() && projek.memenuhiKriteria();
     }
 }
